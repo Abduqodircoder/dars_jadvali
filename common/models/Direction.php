@@ -43,8 +43,8 @@ class Direction extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'fakultet_id' => 'Fakultet ID',
-            'name' => 'Fakultet tanlang',
+            'fakultet_id' => 'Fakultet nomi',
+            'name' => 'Yo\'nalish nomi',
         ];
     }
 

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Direction */
 
-$this->title = 'Create Direction';
-$this->params['breadcrumbs'][] = ['label' => 'Directions', 'url' => ['index']];
+$this->title = 'Yo\'nalish qo\'shish';
+$this->params['breadcrumbs'][] = ['label' => 'Yo\'nalishlar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="direction-create">
