@@ -131,6 +131,33 @@ class BookRoomController extends Controller
         }else
         echo "<option>Ma'lumot yo'q</option>";
     }
+    
+    public function actionGroup($id)
+    {
+        $id = explode("_", $id);
+        $week_id = $id[0];
+        $room_id = $id[1];
+        $para = $id[2];
+        if (!empty($week_id) && !empty($room_id) && !empty($para)){
+            $dj = BookRoom::find()->select(['dj_table_id'])->andWhere(['week_id' =>$week_id, 'room_id' => $room_id,'para' => $para])->asArray()->all();
+            if(!empty($dj))
+            {
+                $djTable = \common\models\DjTable::find()->andWhere(['not in','id',$dj])->all();
+            }else{
+                $djTable = \common\models\DjTable::find()->all();
+            }
+            
+            if(!empty($djTable)){
+                foreach($djTable as $dt){
+                    echo "<option value='".$dt->id."'>".$dt->getName()."</option>";
+                }
+                
+            }
+            
+        }else
+            echo "<option>Ma'lumot yo'q</option>";
+        
+    }
 
     /**
      * Finds the BookRoom model based on its primary key value.

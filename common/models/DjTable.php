@@ -65,9 +65,9 @@ class DjTable extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getSubject()
+    public function getSubjectGroup()
     {
-        return $this->hasOne(Subject::className(), ['id' => 'subject_id']);
+        return $this->hasOne(SubjectGroup::className(), ['id' => 'subject_id']);
     }
 
     /**
@@ -78,5 +78,12 @@ class DjTable extends \yii\db\ActiveRecord
     public function getTeacher()
     {
         return $this->hasOne(Teacher::className(), ['id' => 'teacher_id']);
+    }
+    
+    public function getName()
+    {
+        return  $this->teacher->getFullName().
+                "Guruh: ".$this->subjectGroup->group->name.
+                " Fan: ".$this->subjectGroup->subject->name;
     }
 }

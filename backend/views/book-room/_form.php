@@ -25,12 +25,12 @@ use yii\bootstrap4\ActiveForm;
        ]) ?>
 
     <?= $form->field($model, 'para')->dropdownList([],['prompt' => 'tanlang',
-        'onchange' => '$.post("'.\yii\helpers\Url::to(['book-room/group?id=']).'"+$("#bookroom-week_id")+$("#bookroom-para")+"_"+$(this).val(),
+        'onchange' => '$.post("'.\yii\helpers\Url::to(['book-room/group?id=']).'"+$("#bookroom-week_id")+$("#bookroom-room_id")+"_"+$(this).val(),
                     function(data){$("#bookroom-dj_table_id").html(data)});'
     ]) ?>
 
     <?= $form->field($model, 'dj_table_id')->dropdownList(\yii\helpers\ArrayHelper::map(\common\models\DjTable::find()->all(),'id',function($model){
-        return $model->subject->group->getCourseGroup();
+        return $model->subjectGroup->group->getCourseGroup();
     }),['prompt'=>'tanlang']) ?>
 
     <div class="form-group">
