@@ -12,7 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'teacher_id')->textInput() ?>
+    <?= $form->field($model, 'teacher_id')->dropDownList(\yii\helpers\ArrayHelper::map(common\models\Teacher::find()->all(),'id', function ($model){
+        return $model->getFullName();
+    })) ?>
 
     <?= $form->field($model, 'subject_id')->textInput() ?>
 

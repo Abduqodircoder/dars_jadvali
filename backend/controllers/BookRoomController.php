@@ -124,12 +124,40 @@ class BookRoomController extends Controller
         if (!empty($week_id) && !empty($room_id)){
             $paras = BookRoom::find()->select(['para'])->andWhere(['week_id' =>$week_id, 'room_id' => $room_id])->asArray()->all();
             $diff = array_diff($para,$paras);
+            echo "<option>tanlang</option>";
             foreach ($diff as $p)
             {
                 echo "<option value=$p>$p</option>";
             }
         }else
         echo "<option>Ma'lumot yo'q</option>";
+    }
+
+    public function actionGroup($id)
+    {
+        $id = explode("_", $id);
+        $week_id = $id[0];
+        $room_id = $id[1];
+        $para = $id[2];
+        if (!empty($week_id) && !empty($room_id) && !empty($para)){
+            $dj = BookRoom::find()->select(['dj_table_id'])->andWhere(['week_id' =>$week_id, 'room_id' => $room_id,'para' => $para])->asArray()->all();
+            if(!empty($dj))
+            {
+                $djTable = \common\models\DjTable::find()->andWhere(['not in','id',$dj])->all();
+            }else{
+                $djTable = \common\models\DjTable::find()->all();
+            }
+
+            if(!empty($djTable)){
+                echo "<option>tanlang</option>";
+                foreach($djTable as $dt){
+                    echo "<option value='".$dt->id."'>".$dt->getName()."</option>";
+                }
+
+            }else
+                echo "<option>Guruh yo'q</option>";
+        }
+
     }
 
     /**

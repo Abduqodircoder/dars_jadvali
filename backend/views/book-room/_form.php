@@ -20,12 +20,12 @@ use yii\bootstrap4\ActiveForm;
         return $model->getRoom();
     }),[
             'prompt' => 'tanlang',
-            'onchange' =>'$.post("'.\yii\helpers\Url::to(['book-room/room?id=']).'"+$("#bookroom-week_id")+"_"+$(this).val(),
+            'onchange' =>'$.post("'.\yii\helpers\Url::to(['book-room/room?id=']).'"+$("#bookroom-week_id").val()+"_"+$(this).val(),
                     function(data){$("#bookroom-para").html(data)});',
        ]) ?>
 
     <?= $form->field($model, 'para')->dropdownList([],['prompt' => 'tanlang',
-        'onchange' => '$.post("'.\yii\helpers\Url::to(['book-room/group?id=']).'"+$("#bookroom-week_id")+$("#bookroom-para")+"_"+$(this).val(),
+        'onchange' => '$.post("'.\yii\helpers\Url::to(['book-room/group?id=']).'"+$("#bookroom-week_id").val()+"_"+$("#bookroom-room_id").val()+"_"+$(this).val(),
                     function(data){$("#bookroom-dj_table_id").html(data)});'
     ]) ?>
 

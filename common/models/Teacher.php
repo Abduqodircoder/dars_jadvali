@@ -60,4 +60,6 @@ class Teacher extends \yii\db\ActiveRecord
     {
         return $this->hasMany(DjTable::className(), ['teacher_id' => 'id']);
     }
+
+
 }
