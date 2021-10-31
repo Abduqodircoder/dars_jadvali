@@ -12,7 +12,7 @@ use Yii;
  * @property int|null $subject_id guruh tanlang
  *
  * @property BookRoom[] $bookRooms
- * @property Subject $subject
+ * @property SubjectGroup $subject
  * @property Teacher $teacher
  */
 class DjTable extends \yii\db\ActiveRecord
@@ -34,7 +34,7 @@ class DjTable extends \yii\db\ActiveRecord
             [['teacher_id'], 'required'],
             [['teacher_id', 'subject_id'], 'integer'],
             [['teacher_id'], 'exist', 'skipOnError' => true, 'targetClass' => Teacher::className(), 'targetAttribute' => ['teacher_id' => 'id']],
-            [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::className(), 'targetAttribute' => ['subject_id' => 'id']],
+            [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => SubjectGroup::className(), 'targetAttribute' => ['subject_id' => 'id']],
         ];
     }
 
@@ -46,7 +46,7 @@ class DjTable extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'teacher_id' => 'O\'qituvchi tanlang',
-            'subject_id' => 'guruh tanlang',
+            'subject_id' => 'Fan va guruh tanlang',
         ];
     }
 
@@ -67,7 +67,7 @@ class DjTable extends \yii\db\ActiveRecord
      */
     public function getSubject()
     {
-        return $this->hasOne(Subject::className(), ['id' => 'subject_id']);
+        return $this->hasOne(SubjectGroup::className(), ['id' => 'subject_id']);
     }
 
     /**
@@ -79,4 +79,10 @@ class DjTable extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Teacher::className(), ['id' => 'teacher_id']);
     }
+
+    public function getGroupSubject()
+    {
+        return $this->teacher->getFullName().$this->subject->getGroupSubject();
+    }
 }
+

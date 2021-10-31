@@ -48,7 +48,8 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Fanlar', 'url' => ['/subject/index']];
         $menuItems[] = ['label' => 'Fanlarni guruhlarga biriktirish', 'url' => ['/subject-group/index']];
         $menuItems[] = ['label' => 'Xonalar', 'url' => ['/room/index']];
-        $menuItems[] = ['label' => 'Dars jadvali', 'url' => ['/dj-table/index']];
+        $menuItems[] = ['label' => 'Fanni O\'qituvchiga biriktirish', 'url' => ['/dj-table/index']];
+        $menuItems[] = ['label' => 'Xona band qilish', 'url' => ['/book-room/index']];
 //        $menuItems[] = ['label' => 'Kurslar', 'url' => ['/course/index']];
         $menuItems[] = ['label' => 'Sayt ishlovchilar', 'url' => ['/user/index']];
 

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\BookRoom */
 
-$this->title = 'Create Book Room';
-$this->params['breadcrumbs'][] = ['label' => 'Book Rooms', 'url' => ['index']];
+$this->title = 'Qo\'shish';
+$this->params['breadcrumbs'][] = ['label' => 'Xonalar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="book-room-create">

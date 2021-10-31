@@ -68,4 +68,11 @@ class SubjectGroup extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Subject::className(), ['id' => 'subject_id']);
     }
+
+    public function getGroupSubject()
+    {
+//        print_r($this->subject);exit;
+        return  " Fan: ".$this->subject->name.
+                " Guruh: ".$this->group->name;
+    }
 }

@@ -61,5 +61,9 @@ class Teacher extends \yii\db\ActiveRecord
         return $this->hasMany(DjTable::className(), ['teacher_id' => 'id']);
     }
 
+    public function getFullName()
+    {
+        return $this->l_name[0].".".$this->s_name.".".$this->f_name;
+    }
 
 }

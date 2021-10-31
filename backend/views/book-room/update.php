@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\BookRoom */
 
-$this->title = 'Update Book Room: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Book Rooms', 'url' => ['index']];
+$this->title = 'Yangilash: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Xonalar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Yangilash';
 ?>
 <div class="book-room-update">
 

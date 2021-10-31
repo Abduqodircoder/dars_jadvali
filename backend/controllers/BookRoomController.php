@@ -70,7 +70,7 @@ class BookRoomController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -91,6 +91,7 @@ class BookRoomController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->room_id = null;
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -122,15 +123,20 @@ class BookRoomController extends Controller
         $week_id = $id[0];
         $room_id = $id[1];
         if (!empty($week_id) && !empty($room_id)){
-            $paras = BookRoom::find()->select(['para'])->andWhere(['week_id' =>$week_id, 'room_id' => $room_id])->asArray()->all();
-            $diff = array_diff($para,$paras);
-            echo "<option>tanlang</option>";
-            foreach ($diff as $p)
+            $paras = BookRoom::find()->select(['para'])->andWhere(['week_id' =>$week_id, 'room_id' => $room_id])->asArray()->indexBy(['para'])->all();
+            $diff = array_diff($para,array_keys($paras));
+//            print_r($diff);exit;
+            if (!empty($diff))
             {
-                echo "<option value=$p>$p</option>";
+                echo "<option>tanlang</option>";
+                foreach ($diff as $p)
+                {
+                    echo "<option value=$p>$p</option>";
+                }
+            }else{
+                echo "<option>Ma'lumot yo'q</option>";
             }
-        }else
-        echo "<option>Ma'lumot yo'q</option>";
+        }
     }
 
     public function actionGroup($id)
@@ -151,7 +157,7 @@ class BookRoomController extends Controller
             if(!empty($djTable)){
                 echo "<option>tanlang</option>";
                 foreach($djTable as $dt){
-                    echo "<option value='".$dt->id."'>".$dt->getName()."</option>";
+                    echo "<option value='".$dt->id."'>".$dt->getGroupSubject()."</option>";
                 }
 
             }else
