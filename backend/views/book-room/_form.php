@@ -31,6 +31,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'dj_table_id')->dropdownList(\yii\helpers\ArrayHelper::map(\common\models\DjTable::find()->all(),'id',function($model){
         return $model->subjectGroup->group->getCourseGroup();
+
     }),['prompt'=>'tanlang']) ?>
 
     <div class="form-group">
